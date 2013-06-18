@@ -1,4 +1,7 @@
-my-chrome
-=========
+## My Chrome
 
-my own chrome extension
+功能:
+```
+* AD block
+* js file highlight
+```
