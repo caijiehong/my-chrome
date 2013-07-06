@@ -33,7 +33,7 @@ Uri = (url) ->
   urlInStorage = {}
 
   chrome.storage.sync.get [storageBlockUrlKey], (data) ->
-    urlInStorage = data[storageBlockUrlKey]
+    urlInStorage = data[storageBlockUrlKey] || {}
     registerBlock()
 
   chrome.storage.onChanged.addListener (changes) ->
@@ -82,8 +82,11 @@ Uri = (url) ->
   @.registerBlock = registerBlock = () ->
     chrome.webRequest.onBeforeRequest.removeListener urlBlock
     ar = (key for key of urlInStorage)
-    if ar
+    if ar and ar.length
+      console.log 'blocking', ar
       chrome.webRequest.onBeforeRequest.addListener urlBlock, { urls: ar }, ["blocking"]
+    else
+      chrome.webRequest.onBeforeRequest.removeListener urlBlock
 
   @
 )()

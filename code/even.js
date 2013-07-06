@@ -54,7 +54,7 @@
     storageBlockUrlKey = 'storageBlockUrlKey';
     urlInStorage = {};
     chrome.storage.sync.get([storageBlockUrlKey], function(data) {
-      urlInStorage = data[storageBlockUrlKey];
+      urlInStorage = data[storageBlockUrlKey] || {};
       return registerBlock();
     });
     chrome.storage.onChanged.addListener(function(changes) {
@@ -137,13 +137,20 @@
         }
         return _results;
       })();
-      if (ar) {
+      if (ar && ar.length) {
+        console.log('blocking', ar);
         return chrome.webRequest.onBeforeRequest.addListener(urlBlock, {
           urls: ar
         }, ["blocking"]);
+      } else {
+        return chrome.webRequest.onBeforeRequest.removeListener(urlBlock);
       }
     };
     return this;
   })();
 
 }).call(this);
+
+/*
+//@ sourceMappingURL=even.map
+*/
