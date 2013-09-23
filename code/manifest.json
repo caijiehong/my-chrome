@@ -1,19 +1,25 @@
 ﻿{
-  "name": "CAI's Chrome ALL IN ONE",
-  "version": "8.15.1",
-  "description": "CAI's Chrome ALL IN ONE",
-  "manifest_version": 2,
-  "background": {
-    "page": "eventPage.html",
-	"persistent": true
-  },
-  "web_accessible_resources": [
-    "jsFileInsert.js"
-  ],
-  "browser_action":{
-	"default_icon": "straybird.jpg",
-	"default_popup": "popup.html" 
-  },
-  "options_page": "options.html",
-  "permissions": ["tabs", "http://*/*","webNavigation","webRequest","webRequestBlocking", "storage"]
+    "name": "CAI's Chrome ALL IN ONE",
+    "version": "8.15.1",
+    "description": "CAI's Chrome ALL IN ONE",
+    "manifest_version": 2,
+    "background": {
+        "page": "eventPage.html",
+        "persistent": true
+    },
+    "web_accessible_resources": [
+        "jsFileInsert.js",
+        "douban.js",
+        "lib/require.js",
+        "lib/jquery-2.0.3.min.js",
+        "lib/jquery-2.0.3.min.map",
+        "douban/app.js",
+        "douban/insert.js"
+    ],
+    "browser_action": {
+        "default_icon": "straybird.jpg",
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html",
+    "permissions": ["tabs", "http://*/*", "webNavigation", "webRequest", "webRequestBlocking", "storage"]
 }
